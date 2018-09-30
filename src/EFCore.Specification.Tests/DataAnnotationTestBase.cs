@@ -58,11 +58,7 @@ namespace Microsoft.EntityFrameworkCore
             => new CompositeConventionSetBuilder(context.GetService<IEnumerable<IConventionSetBuilder>>().ToList());
 
         protected virtual void Validate(ModelBuilder modelBuilder)
-        {
-            modelBuilder.GetInfrastructure().Metadata.Validate();
-            var context = CreateContext();
-            context.GetService<IModelValidator>().Validate(modelBuilder.Model);
-        }
+            => modelBuilder.FinalizeModel();
 
         protected class Person
         {
