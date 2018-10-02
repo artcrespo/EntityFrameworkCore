@@ -158,6 +158,7 @@
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp.Analyzers">
     <Rule Id="RCS1090" Action="None" />
     <Rule Id="RCS1141" Action="None" />
+    <Rule Id="RCS1142" Action="None" />
     <Rule Id="RCS1165" Action="None" />
     <Rule Id="RCS1168" Action="None" />
     <Rule Id="RCS1194" Action="None" />

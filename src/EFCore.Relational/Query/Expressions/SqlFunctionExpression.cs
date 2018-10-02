@@ -288,6 +288,6 @@ namespace Microsoft.EntityFrameworkCore.Query.Expressions
         /// <returns>A <see cref="string" /> representation of the Expression.</returns>
         public override string ToString()
             => (Instance != null ? Instance + "." : Schema != null ? Schema + "." : "") +
-               $"{FunctionName}" + (IsNiladic ? "" : $"({string.Join(", ", Arguments)})");
+               FunctionName + (IsNiladic ? "" : $"({string.Join(", ", Arguments)})");
     }
 }

@@ -176,12 +176,13 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal
             Assert.Equal("m_onTheRun", property.GetFieldName());
         }
 
-#pragma warning disable 649
-#pragma warning disable 169
+#pragma warning disable RCS1222 // Merge preprocessor directives.
+#pragma warning disable 649, 169
 #pragma warning disable IDE0027 // Use expression body for accessors
 #pragma warning disable IDE1006 // Naming Styles
 #pragma warning disable IDE0044 // Add readonly modifier
         private class TheDarkSideOfTheMoon
+#pragma warning restore RCS1222 // Merge preprocessor directives.
         {
             private readonly string m_SpeakToMe;
             private int _notSpeakToMe;
@@ -381,10 +382,11 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal
 
             public int Unrelated = 2;
         }
-#pragma warning restore 649
-#pragma warning restore 169
+#pragma warning disable RCS1222 // Merge preprocessor directives.
+#pragma warning restore 649, 169
 #pragma warning restore IDE0027 // Use expression body for accessors
 #pragma warning restore IDE1006 // Naming Styles
 #pragma warning restore IDE0044 // Add readonly modifier
     }
+#pragma warning restore RCS1222 // Merge preprocessor directives.
 }

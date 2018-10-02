@@ -185,9 +185,7 @@ namespace Microsoft.EntityFrameworkCore.Internal
             {
                 memberExpression = RemoveTypeAs(RemoveConvert(propertyAccessExpression)) as MemberExpression;
 
-                var propertyInfo = memberExpression?.Member as PropertyInfo;
-
-                if (propertyInfo == null)
+                if (!(memberExpression?.Member is PropertyInfo propertyInfo))
                 {
                     return null;
                 }
