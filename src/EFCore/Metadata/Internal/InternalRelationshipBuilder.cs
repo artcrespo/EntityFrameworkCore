@@ -1800,8 +1800,8 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                     dependentEntityTypeBuilder.Metadata,
                     navigationToPrincipal?.Property,
                     navigationToDependent?.Property,
-                    dependentProperties != null && dependentProperties.Any() ? dependentProperties : null,
-                    principalProperties != null && principalProperties.Any() ? principalProperties : null,
+                    dependentProperties != null && dependentProperties.Count > 0 ? dependentProperties : null,
+                    principalProperties != null && principalProperties.Count > 0 ? principalProperties : null,
                     isUnique,
                     isRequired,
                     configurationSource));
@@ -1826,8 +1826,8 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                     navigationToDependent ?? (Metadata.PrincipalToDependent == null
                         ? (PropertyIdentity?)null
                         : PropertyIdentity.Create(Metadata.PrincipalToDependent)),
-                    dependentProperties != null && dependentProperties.Any() ? dependentProperties : null,
-                    principalProperties != null && principalProperties.Any() ? principalProperties : null,
+                    dependentProperties != null && dependentProperties.Count > 0 ? dependentProperties : null,
+                    principalProperties != null && principalProperties.Count > 0 ? principalProperties : null,
                     isRequired ?? Metadata.IsRequired,
                     removeCurrent,
                     principalEndConfigurationSource,
@@ -1869,7 +1869,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                     : Metadata.PrincipalToDependent?.Name;
 
                 var newRelationshipConfigurationSource = Metadata.GetConfigurationSource();
-                if ((dependentProperties != null && dependentProperties.Any())
+                if ((dependentProperties != null && dependentProperties.Count > 0)
                     || navigationToPrincipal?.Name != null
                     || navigationToDependent?.Name != null)
                 {
@@ -1912,7 +1912,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                                          ?? newRelationshipBuilder;
 
                 if (dependentProperties != null
-                    && dependentProperties.Any())
+                    && dependentProperties.Count > 0)
                 {
                     dependentProperties = dependentEntityTypeBuilder.GetActualProperties(dependentProperties, configurationSource);
                     var foreignKeyPropertiesConfigurationSource = configurationSource;
@@ -1933,7 +1933,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                 }
 
                 if (principalProperties != null
-                    && principalProperties.Any())
+                    && principalProperties.Count > 0)
                 {
                     principalProperties = principalEntityTypeBuilder.GetActualProperties(principalProperties, configurationSource);
                     var principalKeyConfigurationSource = configurationSource;
@@ -2383,7 +2383,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                 p => p.GetConfigurationSource() == ConfigurationSource.Convention
                      && p.IsShadowProperty).ToList();
             var tempIndex = temporaryProperties != null
-                            && temporaryProperties.Any()
+                            && temporaryProperties.Count > 0
                             && dependentEntityType.FindIndex(temporaryProperties) == null
                 ? dependentEntityType.Builder.HasIndex(temporaryProperties, ConfigurationSource.Convention).Metadata
                 : null;
@@ -2392,7 +2392,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                 p => p.GetConfigurationSource() == ConfigurationSource.Convention
                      && p.IsShadowProperty).ToList();
             var keyTempIndex = temporaryKeyProperties != null
-                               && temporaryKeyProperties.Any()
+                               && temporaryKeyProperties.Count > 0
                                && principalEntityType.FindIndex(temporaryKeyProperties) == null
                 ? principalEntityType.Builder.HasIndex(temporaryKeyProperties, ConfigurationSource.Convention).Metadata
                 : null;

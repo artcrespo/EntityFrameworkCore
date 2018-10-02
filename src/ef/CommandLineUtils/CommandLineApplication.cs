@@ -317,7 +317,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
             for (var cmd = this; cmd != null; cmd = cmd.Parent)
             {
                 cmd.IsShowingInformation = true;
-                if (cmd != this && cmd.Arguments.Any())
+                if (cmd != this && cmd.Arguments.Count > 0)
                 {
                     var args = string.Join(" ", cmd.Arguments.Select(arg => arg.Name));
                     headerBuilder.Insert(usagePrefixLength, string.Format(" {0} {1}", cmd.Name, args));
@@ -358,7 +358,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
             var maxArgLen = 0;
             for (var cmd = target; cmd != null; cmd = cmd.Parent)
             {
-                if (cmd.Arguments.Any())
+                if (cmd.Arguments.Count > 0)
                 {
                     if (cmd == target)
                     {
@@ -377,7 +377,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
 
             for (var cmd = target; cmd != null; cmd = cmd.Parent)
             {
-                if (cmd.Arguments.Any())
+                if (cmd.Arguments.Count > 0)
                 {
                     var outputFormat = "  {0}{1}";
                     foreach (var arg in cmd.Arguments)
@@ -391,7 +391,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
                 }
             }
 
-            if (target.Options.Any())
+            if (target.Options.Count > 0)
             {
                 headerBuilder.Append(" [options]");
 
@@ -406,7 +406,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
                 }
             }
 
-            if (target.Commands.Any())
+            if (target.Commands.Count > 0)
             {
                 headerBuilder.Append(" [command]");
 

@@ -265,7 +265,7 @@ namespace Microsoft.EntityFrameworkCore.Design.Internal
                 {
                     if (partStart != i)
                     {
-                        builder.Append(name.Substring(partStart, i - partStart));
+                        builder.Append(name, partStart, i - partStart);
                     }
 
                     partStart = i + 1;

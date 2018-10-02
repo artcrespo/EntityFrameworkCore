@@ -1063,7 +1063,7 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking.Internal
 
                 SetEntityState(cascadeState);
             }
-            else if (fks.Any())
+            else if (fks.Count > 0)
             {
                 if (sensitiveLoggingEnabled)
                 {

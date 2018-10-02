@@ -708,7 +708,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                     .Create(QueryCompilationContext)
                     .FindEntitiesInResult(outputExpression);
 
-            if (entityTrackingInfos.Any())
+            if (entityTrackingInfos.Count > 0)
             {
                 MethodInfo trackingMethod;
 

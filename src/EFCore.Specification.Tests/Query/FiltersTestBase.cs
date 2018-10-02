@@ -127,7 +127,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             Assert.Equal(69, results.Count);
             Assert.True(
                 results.All(
-                    p => !p.OrderDetails.Any()
+                    p => p.OrderDetails.Count == 0
                          || p.OrderDetails.All(od => od.Quantity > 50)));
         }
 

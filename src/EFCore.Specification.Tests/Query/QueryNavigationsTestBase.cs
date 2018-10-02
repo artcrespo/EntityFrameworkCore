@@ -616,12 +616,12 @@ namespace Microsoft.EntityFrameworkCore.Query
                 cs => from c in cs
                       select new
                       {
-                          Any = c.Orders.Any()
+                          Any = c.Orders.Count > 0
                       },
                 cs => from c in cs
                       select new
                       {
-                          Any = (c.Orders ?? new List<Order>()).Any()
+                          Any = (c.Orders ?? new List<Order>()).Count > 0
                       },
                 elementSorter: e => e.Any);
         }
@@ -644,10 +644,10 @@ namespace Microsoft.EntityFrameworkCore.Query
             return AssertQuery<Customer>(
                 isAsync,
                 cs => from c in cs
-                      where c.Orders.Any()
+                      where c.Orders.Count > 0
                       select c,
                 cs => from c in cs
-                      where (c.Orders ?? new List<Order>()).Any()
+                      where (c.Orders ?? new List<Order>()).Count > 0
                       select c,
                 entryCount: 89);
         }
@@ -1447,7 +1447,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                 Assert.Equal(1, result.Count);
                 foreach (var order in result[0])
                 {
-                    Assert.True(order.OrderDetails.Any());
+                    Assert.True(order.OrderDetails.Count > 0);
                 }
             }
         }
@@ -1466,7 +1466,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                 Assert.Equal(1, result.Count);
                 foreach (var order in result[0])
                 {
-                    Assert.True(order.OrderDetails.Any());
+                    Assert.True(order.OrderDetails.Count > 0);
                     foreach (var detail in order.OrderDetails)
                     {
                         Assert.NotNull(detail.Product);

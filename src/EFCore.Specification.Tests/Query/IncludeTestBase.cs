@@ -2302,7 +2302,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                             .Include(o => o.Order)
                             .ToList();
 
-                Assert.True(orderDetails.Any());
+                Assert.True(orderDetails.Count > 0);
 
                 foreach (var orderDetail in orderDetails)
                 {

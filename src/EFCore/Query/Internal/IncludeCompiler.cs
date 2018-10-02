@@ -322,7 +322,7 @@ namespace Microsoft.EntityFrameworkCore.Query.Internal
             QueryModel queryModel,
             IReadOnlyCollection<Ordering> parentOrderings)
         {
-            if (parentOrderings.Any())
+            if (parentOrderings.Count > 0)
             {
                 var orderByClause
                     = queryModel.BodyClauses

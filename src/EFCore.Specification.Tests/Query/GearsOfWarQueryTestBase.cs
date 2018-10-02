@@ -890,7 +890,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         {
             return AssertQuery<Gear>(
                 isAsync,
-                gs => gs.Where(w => w.Weapons.Any()));
+                gs => gs.Where(w => w.Weapons.Count > 0));
         }
 
         [ConditionalTheory]
@@ -3313,7 +3313,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         {
             using (var ctx = CreateContext())
             {
-                var query = from gear in ctx.Gears.OrderBy(g => g.Rank).Where(g => g.Weapons.Any()).Include(g => g.CityOfBirth)
+                var query = from gear in ctx.Gears.OrderBy(g => g.Rank).Where(g => g.Weapons.Count > 0).Include(g => g.CityOfBirth)
                             where !gear.HasSoulPatch
                             orderby gear.Nickname
                             select gear;
@@ -4741,7 +4741,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                 gs =>
                     from o in gs.OfType<Officer>()
                     orderby o.HasSoulPatch descending, o.Tag.Note
-                    where o.Reports.Any()
+                    where o.Reports.Count > 0
                     select new
                     {
                         o.FullName,

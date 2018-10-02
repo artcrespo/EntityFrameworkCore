@@ -2424,7 +2424,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         {
             return AssertQuery<Level1>(
                 isAsync,
-                l1s => l1s.SelectMany(l1 => l1.OneToMany_Required1).Where(l2 => l2.OneToMany_Required2.Any()),
+                l1s => l1s.SelectMany(l1 => l1.OneToMany_Required1).Where(l2 => l2.OneToMany_Required2.Count > 0),
                 e => e.Id,
                 (e, a) => Assert.Equal(e.Id, a.Id));
         }

@@ -164,7 +164,7 @@ namespace Microsoft.EntityFrameworkCore.Scaffolding.Internal
                 _sb.AppendLine($"// {entityTypeError.Value} Please see the warning messages.");
             }
 
-            if (model.Scaffolding().EntityTypeErrors.Any())
+            if (model.Scaffolding().EntityTypeErrors.Count > 0)
             {
                 _sb.AppendLine();
             }

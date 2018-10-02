@@ -397,7 +397,7 @@ namespace Microsoft.EntityFrameworkCore.Query.Expressions
         {
             var subquery = new SelectExpression(Dependencies, _queryCompilationContext, SubqueryAliasPrefix)
             {
-                IsProjectStar = IsProjectStar || !_projection.Any()
+                IsProjectStar = IsProjectStar || _projection.Count == 0
             };
 
             var projectionsToAdd = IsProjectStar ? _starProjection : _projection;
@@ -740,7 +740,7 @@ namespace Microsoft.EntityFrameworkCore.Query.Expressions
                 }
             }
 
-            if (_projection.Any())
+            if (_projection.Count > 0)
             {
                 foreach (var typeMaterializationInfo in _projection.Select(
                     e =>

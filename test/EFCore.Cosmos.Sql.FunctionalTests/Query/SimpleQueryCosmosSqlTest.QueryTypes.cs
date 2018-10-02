@@ -121,7 +121,7 @@ WHERE (c[""Discriminator""] = ""Order"")");
             await AssertQuery<OrderQuery>(
                 isAsync,
                 ovs => from ov in ovs.Where(o => o.CustomerID == "ALFKI")
-                       where ov.Customer.Orders.Any()
+                       where ov.Customer.Orders.Count > 0
                        select ov);
 
             AssertSql(

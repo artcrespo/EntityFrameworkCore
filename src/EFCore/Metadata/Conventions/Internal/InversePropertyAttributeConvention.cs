@@ -490,7 +490,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal
                         && entityType.Model.FindActualEntityType(referencingTuple.Item2) == entityType)
                     {
                         referencingNavigationsWithAttribute.RemoveAt(index);
-                        if (!referencingNavigationsWithAttribute.Any())
+                        if (referencingNavigationsWithAttribute.Count == 0)
                         {
                             inverseNavigations.Remove(inverseNavigation);
                         }

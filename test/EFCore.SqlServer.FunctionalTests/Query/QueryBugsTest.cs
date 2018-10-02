@@ -2805,7 +2805,7 @@ BEGIN
                         .ToListAsync();
 
                     Assert.Equal(2, result.Count);
-                    Assert.Equal(true, result.All(r => r.Students.Any()));
+                    Assert.Equal(true, result.All(r => r.Students.Count > 0));
                 }
             }
         }
@@ -2823,7 +2823,7 @@ BEGIN
                         .ToListAsync();
 
                     Assert.Equal(2, result.Count);
-                    Assert.True(result.All(r => r.Students.Any()));
+                    Assert.True(result.All(r => r.Students.Count > 0));
                     Assert.Null(result.Single(t => t.Name == "Ms. Frizzle").Family);
                     Assert.NotNull(result.Single(t => t.Name == "Mr. Garrison").Family);
                 }

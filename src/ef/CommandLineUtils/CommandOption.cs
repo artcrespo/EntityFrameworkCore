@@ -73,14 +73,14 @@ namespace Microsoft.DotNet.Cli.CommandLine
                     Values.Add(value);
                     break;
                 case CommandOptionType.SingleValue:
-                    if (Values.Any())
+                    if (Values.Count > 0)
                     {
                         return false;
                     }
                     Values.Add(value);
                     break;
                 case CommandOptionType.BoolValue:
-                    if (Values.Any())
+                    if (Values.Count > 0)
                     {
                         return false;
                     }
@@ -116,7 +116,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
             return true;
         }
 
-        public bool HasValue() => Values.Any();
+        public bool HasValue() => Values.Count > 0;
 
         public string Value() => HasValue() ? Values[0] : null;
 

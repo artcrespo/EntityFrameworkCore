@@ -40,7 +40,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
             var reads = modificationCommands[0].ColumnModifications.Where(o => o.IsRead).ToArray();
 
             var nameVariable = $"{name}_{commandPosition}";
-            if (reads.Any())
+            if (reads.Length > 0)
             {
                 if (!variablesInsert.Any(p => p.Key == nameVariable))
                 {
@@ -92,7 +92,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
             {
                 var operations = modificationCommands[i].ColumnModifications;
                 var readOperations = operations.Where(o => o.IsRead).ToArray();
-                if (readOperations.Any())
+                if (readOperations.Length > 0)
                 {
                     AppendReturnCursor(commandStringBuilder, nameVariable, readOperations, i, cursorPosition);
                     resultSetMapping = ResultSetMapping.LastInResultSet;
@@ -136,7 +136,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
             var conditionOperations = operations.Where(o => o.IsCondition).ToList();
             var readOperations = operations.Where(o => o.IsRead).ToList();
 
-            if (readOperations.Any())
+            if (readOperations.Count > 0)
             {
                 variablesCommand
                     .AppendJoin(
@@ -247,7 +247,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
             IReadOnlyList<ColumnModification> operations,
             int commandPosition)
         {
-            if (operations.Any())
+            if (operations.Count > 0)
             {
                 commandStringBuilder
                     .AppendLine()
@@ -268,7 +268,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
             int commandPosition,
             int cursorPosition)
         {
-            if (operations.Any())
+            if (operations.Count > 0)
             {
                 commandStringBuilder
                     .Append("OPEN :cur")

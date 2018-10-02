@@ -544,7 +544,7 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking.Internal
 
                         var newList = keyValuePair.Value.Where(tuple => tuple.Item2 != entry).ToList();
 
-                        if (newList.Any())
+                        if (newList.Count > 0)
                         {
                             _referencedUntrackedEntities.Value.Add(keyValuePair.Key, newList);
                         }
@@ -923,7 +923,7 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking.Internal
             }
 
             var entriesToSave = GetInternalEntriesToSave();
-            if (!entriesToSave.Any())
+            if (entriesToSave.Count == 0)
             {
                 return 0;
             }

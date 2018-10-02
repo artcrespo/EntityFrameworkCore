@@ -154,7 +154,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             return AssertQuery<OrderQuery>(
                 isAsync,
                 ovs => from ov in ovs
-                       where ov.Customer.Orders.Any()
+                       where ov.Customer.Orders.Count > 0
                        select ov);
         }
     }

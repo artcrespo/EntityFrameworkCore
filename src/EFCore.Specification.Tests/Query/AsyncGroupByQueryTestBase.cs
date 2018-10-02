@@ -56,7 +56,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                         .Where(c => c.CustomerID.StartsWith("A"))
                         .ToListAsync())
                     .Select(
-                        c => c.Orders.Any()
+                        c => c.Orders.Count > 0
                             ? c.Orders.GroupBy(o => o.OrderID).Select(g => g.Key).ToArray()
                             : Array.Empty<int>()).ToList();
 
@@ -64,7 +64,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                     // ReSharper disable once StringStartsWithIsCultureSpecific
                     .Where(c => c.CustomerID.StartsWith("A"))
                     .Select(
-                        c => c.Orders.Any()
+                        c => c.Orders.Count > 0
                             ? c.Orders.GroupBy(o => o.OrderID).Select(g => g.Key).ToArray()
                             : Array.Empty<int>());
 

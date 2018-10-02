@@ -1154,7 +1154,7 @@ namespace Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal
             }
 
             if (groupJoinSubqueryMainFromClause != null
-                && (groupJoinSubqueryBodyClauses.Any() || groupJoinSubqueryResultOperators.Any()))
+                && (groupJoinSubqueryBodyClauses.Count > 0 || groupJoinSubqueryResultOperators.Count > 0))
             {
                 var querySourceMapping = new QuerySourceMapping();
                 querySourceMapping.AddMapping(groupJoinSubqueryMainFromClause, newQuerySourceReferenceExpression);

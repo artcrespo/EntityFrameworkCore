@@ -274,7 +274,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         /// </value>
         public virtual bool RequiresClientResultOperator
         {
-            get => _unflattenedGroupJoinClauses.Any() || _requiresClientResultOperator || RequiresClientEval;
+            get => _unflattenedGroupJoinClauses.Count > 0 || _requiresClientResultOperator || RequiresClientEval;
             set => _requiresClientResultOperator = value;
         }
 
@@ -859,7 +859,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             {
                 var subSelectExpression = subQueryModelVisitor.Queries.First();
 
-                if ((!subSelectExpression.OrderBy.Any()
+                if ((subSelectExpression.OrderBy.Count == 0
                      || subSelectExpression.Limit != null
                      || subSelectExpression.Offset != null)
                     && (QueryCompilationContext.IsLateralJoinSupported
@@ -1293,7 +1293,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             protected override void VisitResultOperators(ObservableCollection<ResultOperatorBase> resultOperators, QueryModel queryModel)
             {
                 var groupResultOperators = queryModel.ResultOperators.OfType<GroupResultOperator>().ToList();
-                if (groupResultOperators.Any())
+                if (groupResultOperators.Count > 0)
                 {
                     var orderByClause = queryModel.BodyClauses.OfType<OrderByClause>().FirstOrDefault();
                     if (orderByClause == null)
@@ -2302,7 +2302,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         {
             Check.NotNull(subQueryModelVisitor, nameof(subQueryModelVisitor));
 
-            if (!subQueryModelVisitor._injectedParameters.Any())
+            if (subQueryModelVisitor._injectedParameters.Count == 0)
             {
                 return;
             }
