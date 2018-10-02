@@ -194,8 +194,8 @@ namespace Microsoft.DotNet.Cli.CommandLine
 
             if (option == null)
             {
-                if (isLongOption && string.IsNullOrEmpty(optionName) &&
-                    !command._throwOnUnexpectedArg && AllowArgumentSeparator)
+                if (isLongOption && string.IsNullOrEmpty(optionName)
+                    && !command._throwOnUnexpectedArg && AllowArgumentSeparator)
                 {
                     // a stand-alone "--" is the argument separator, so skip it and
                     // handle the rest of the args as unexpected args
@@ -226,8 +226,8 @@ namespace Microsoft.DotNet.Cli.CommandLine
                 }
                 else
                 {
-                    if (option.OptionType == CommandOptionType.NoValue ||
-                        option.OptionType == CommandOptionType.BoolValue)
+                    if (option.OptionType == CommandOptionType.NoValue
+                        || option.OptionType == CommandOptionType.BoolValue)
                     {
                         // No value is needed for this option
                         option.TryParse(null);

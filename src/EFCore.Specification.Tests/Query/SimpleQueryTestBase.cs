@@ -1843,12 +1843,12 @@ namespace Microsoft.EntityFrameworkCore.Query
                 isAsync,
                 es =>
                     from e1 in es.Take(3)
-                    where e1.FirstName ==
-                          (from e2 in es.OrderBy(e => e.EmployeeID)
-                           select new
-                           {
-                               Foo = e2
-                           })
+                    where e1.FirstName
+                          == (from e2 in es.OrderBy(e => e.EmployeeID)
+                              select new
+                              {
+                                  Foo = e2
+                              })
                           .First().Foo.FirstName
                     select e1,
                 entryCount: 1);
@@ -1862,9 +1862,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                 isAsync,
                 es =>
                     from e1 in es.Take(3)
-                    where e1.FirstName ==
-                          (from e2 in es.OrderBy(e => e.EmployeeID)
-                           select e2)
+                    where e1.FirstName
+                          == (from e2 in es.OrderBy(e => e.EmployeeID)
+                              select e2)
                           .FirstOrDefault().FirstName
                     select e1,
                 entryCount: 1);
@@ -1878,12 +1878,12 @@ namespace Microsoft.EntityFrameworkCore.Query
                 isAsync,
                 es =>
                     from e1 in es.Take(3)
-                    where e1.FirstName ==
-                          (from e2 in es.OrderBy(e => e.EmployeeID)
-                           select new
-                           {
-                               Foo = e2
-                           })
+                    where e1.FirstName
+                          == (from e2 in es.OrderBy(e => e.EmployeeID)
+                              select new
+                              {
+                                  Foo = e2
+                              })
                           .FirstOrDefault().Foo.FirstName
                     select e1,
                 entryCount: 1);
@@ -1941,8 +1941,8 @@ namespace Microsoft.EntityFrameworkCore.Query
                 isAsync,
                 cs =>
                     from c1 in cs
-                    where c1.IsLondon ==
-                          cs.OrderBy(c => c.CustomerID)
+                    where c1.IsLondon
+                          == cs.OrderBy(c => c.CustomerID)
                               .Select(
                                   c => new
                                   {

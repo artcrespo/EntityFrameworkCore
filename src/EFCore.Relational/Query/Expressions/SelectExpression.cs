@@ -450,8 +450,8 @@ namespace Microsoft.EntityFrameworkCore.Query.Expressions
             foreach (var ordering in _orderBy)
             {
                 subquery.AddToOrderBy(
-                    ordering.Expression is AliasExpression aliasExpression &&
-                    aliasExpressionMap.TryGetValue(aliasExpression, out var newExpression)
+                    ordering.Expression is AliasExpression aliasExpression
+                    && aliasExpressionMap.TryGetValue(aliasExpression, out var newExpression)
                         ? new Ordering(newExpression, ordering.OrderingDirection)
                         : ordering);
             }

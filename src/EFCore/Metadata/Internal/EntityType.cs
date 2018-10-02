@@ -1054,8 +1054,8 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
 
             return FindDeclaredForeignKeys(properties).SingleOrDefault(
                 fk =>
-                    PropertyListComparer.Instance.Equals(fk.PrincipalKey.Properties, principalKey.Properties) &&
-                    StringComparer.Ordinal.Equals(fk.PrincipalEntityType.Name, principalEntityType.Name));
+                    PropertyListComparer.Instance.Equals(fk.PrincipalKey.Properties, principalKey.Properties)
+                    && StringComparer.Ordinal.Equals(fk.PrincipalEntityType.Name, principalEntityType.Name));
         }
 
         /// <summary>
