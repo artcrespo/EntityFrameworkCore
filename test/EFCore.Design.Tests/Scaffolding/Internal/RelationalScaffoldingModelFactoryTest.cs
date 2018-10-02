@@ -895,7 +895,7 @@ namespace Microsoft.EntityFrameworkCore
             Assert.NotEmpty(list.GetReferencingForeignKeys());
             Assert.NotEmpty(list.GetForeignKeys());
 
-            var principalKey = list.FindForeignKeys(list.FindProperty("ParentId")).SingleOrDefault().PrincipalKey;
+            var principalKey = list.FindForeignKeys(list.FindProperty("ParentId")).Single().PrincipalKey;
             Assert.Equal("ItemsList", principalKey.DeclaringEntityType.Name);
             Assert.Equal("Id", principalKey.Properties[0].Name);
         }

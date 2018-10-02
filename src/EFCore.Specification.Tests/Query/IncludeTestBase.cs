@@ -15,6 +15,9 @@ using Xunit;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable StringStartsWithIsCultureSpecific
+
+#pragma warning disable RCS1202 // Avoid NullReferenceException.
+
 namespace Microsoft.EntityFrameworkCore.Query
 {
     public abstract class IncludeTestBase<TFixture> : IClassFixture<TFixture>
@@ -4118,7 +4121,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         [InlineData(false, false)]
         [InlineData(true, false)]
         // async blocked by issue #11917
-        //[InlineData(false, true)] 
+        //[InlineData(false, true)]
         //[InlineData(true, true)]
         public virtual async Task Include_with_double_group_by(bool useString, bool async)
         {
@@ -4145,7 +4148,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         [InlineData(false, false)]
         [InlineData(true, false)]
         // async blocked by issue #11917
-        //[InlineData(false, true)] 
+        //[InlineData(false, true)]
         //[InlineData(true, true)]
         public virtual async Task Include_with_double_group_by_no_tracking(bool useString, bool async)
         {
@@ -4172,7 +4175,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         [InlineData(false, false)]
         [InlineData(true, false)]
         // async blocked by issue #11917
-        //[InlineData(false, true)] 
+        //[InlineData(false, true)]
         //[InlineData(true, true)]
         public virtual async Task Include_with_double_group_by_and_aggregate(bool useString, bool async)
         {

@@ -22,6 +22,9 @@ using Xunit;
 // ReSharper disable StringEndsWithIsCultureSpecific
 // ReSharper disable ReplaceWithSingleCallToSingle
 // ReSharper disable once CheckNamespace
+
+#pragma warning disable RCS1202 // Avoid NullReferenceException.
+
 namespace Microsoft.EntityFrameworkCore.Query
 {
     public abstract class GearsOfWarQueryTestBase<TFixture> : QueryTestBase<TFixture>

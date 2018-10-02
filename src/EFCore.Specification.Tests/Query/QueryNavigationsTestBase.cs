@@ -21,6 +21,9 @@ using Xunit;
 // ReSharper disable UseCollectionCountProperty
 // ReSharper disable AccessToDisposedClosure
 // ReSharper disable PossibleUnintendedReferenceComparison
+
+#pragma warning disable RCS1202 // Avoid NullReferenceException.
+
 namespace Microsoft.EntityFrameworkCore.Query
 {
     public abstract class QueryNavigationsTestBase<TFixture> : QueryTestBase<TFixture>
