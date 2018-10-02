@@ -443,7 +443,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
                 {
                     argumentSeparatorBuilder.AppendLine();
                     argumentSeparatorBuilder.AppendLine("Args:");
-                    argumentSeparatorBuilder.AppendLine($"  {target.ArgumentSeparatorHelpText}");
+                    argumentSeparatorBuilder.Append("  ").AppendLine(target.ArgumentSeparatorHelpText);
                     argumentSeparatorBuilder.AppendLine();
                 }
             }

@@ -2181,7 +2181,7 @@ namespace Microsoft.EntityFrameworkCore.Query
 
         private bool _canBindPropertyToOuterParameter = true;
 
-        private const string OuterQueryParameterNamePrefix = @"_outer_";
+        private const string OuterQueryParameterNamePrefix = "_outer_";
 
         private readonly Dictionary<string, Expression> _injectedParameters = new Dictionary<string, Expression>();
 

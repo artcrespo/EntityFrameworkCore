@@ -2713,7 +2713,7 @@ WHERE [w].[Val] = 1");
                     Assert.Equal(0, valueParam.Value);
 
                     var blogs = context.Blogs.FromSql(
-                            @"[dbo].[GetPersonAndVoteCount]  @id, @Value out",
+                            "[dbo].[GetPersonAndVoteCount]  @id, @Value out",
                             new SqlParameter
                             {
                                 ParameterName = "id",
@@ -3835,7 +3835,7 @@ GROUP BY [e].[Name], [e].[MaumarEntity11818_Name]");
                         .ToList();
 
                     AssertSql(
-                        @"");
+                        "");
                 }
             }
         }
@@ -3875,7 +3875,7 @@ GROUP BY [e].[Name], [e].[MaumarEntity11818_Name]");
                         .ToList();
 
                     AssertSql(
-                        @"");
+                        "");
                 }
             }
         }
@@ -5153,7 +5153,7 @@ ORDER BY [t].[Id]");
                     Assert.Equal(4, query.Count);
 
                     AssertSql(
-                        @"SELECT o.Amount From Orders AS o");
+                        "SELECT o.Amount From Orders AS o");
                 }
             }
         }

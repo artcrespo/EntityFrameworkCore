@@ -46,7 +46,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
                 {
                     var variblesBuilder = new StringBuilder();
 
-                    variblesBuilder.AppendLine($"TYPE efRow{nameVariable} IS RECORD")
+                    variblesBuilder.Append("TYPE efRow").Append(nameVariable).AppendLine(" IS RECORD")
                         .AppendLine("(");
                     variblesBuilder.AppendJoin(
                             reads,
@@ -58,9 +58,9 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
                         .Append(")")
                         .AppendLine(SqlGenerationHelper.StatementTerminator);
 
-                    variblesBuilder.Append($"TYPE ef{nameVariable} IS TABLE OF efRow{nameVariable}")
+                    variblesBuilder.Append("TYPE ef").Append(nameVariable).Append(" IS TABLE OF efRow").Append(nameVariable)
                         .AppendLine(SqlGenerationHelper.StatementTerminator)
-                        .Append($"list{nameVariable} ef{nameVariable}")
+                        .Append("list").Append(nameVariable).Append(" ef").Append(nameVariable)
                         .AppendLine(SqlGenerationHelper.StatementTerminator);
 
                     variablesInsert.Add(nameVariable, variblesBuilder.ToString());
@@ -69,11 +69,11 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
                 commandStringBuilder.Append("list")
                     .Append(nameVariable)
                     .Append(" := ")
-                    .Append($"ef{nameVariable}")
+                    .Append("ef").Append(nameVariable)
                     .Append("()")
                     .AppendLine(SqlGenerationHelper.StatementTerminator);
 
-                commandStringBuilder.Append($"list{nameVariable}.extend(")
+                commandStringBuilder.Append("list").Append(nameVariable).Append(".extend(")
                     .Append(modificationCommands.Count)
                     .Append(")")
                     .AppendLine(SqlGenerationHelper.StatementTerminator);
@@ -211,7 +211,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
         {
             commandStringBuilder
                 .AppendLine("v_RowCount := SQL%ROWCOUNT;")
-                .AppendLine($"OPEN :cur{cursorPosition} FOR")
+                .Append("OPEN :cur").Append(cursorPosition).AppendLine(" FOR")
                 .Append("SELECT ")
                 .AppendJoin(
                     readOperations,
@@ -236,7 +236,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
         {
             commandStringBuilder
                 .AppendLine("v_RowCount := SQL%ROWCOUNT;")
-                .AppendLine($"OPEN :cur{cursorPosition} FOR SELECT v_RowCount FROM DUAL;");
+                .Append("OPEN :cur").Append(cursorPosition).AppendLine(" FOR SELECT v_RowCount FROM DUAL;");
 
             return ResultSetMapping.LastInResultSet;
         }
@@ -255,7 +255,7 @@ namespace Microsoft.EntityFrameworkCore.Oracle.Update.Internal
                     .AppendJoin(
                         operations,
                         (sb, cm) => sb.Append(SqlGenerationHelper.DelimitIdentifier(cm.ColumnName)))
-                    .Append($" INTO list{name}({commandPosition + 1})");
+                    .Append(" INTO list").Append(name).Append("(").Append(commandPosition + 1).Append(")");
             }
 
             commandStringBuilder.AppendLine(SqlGenerationHelper.StatementTerminator);

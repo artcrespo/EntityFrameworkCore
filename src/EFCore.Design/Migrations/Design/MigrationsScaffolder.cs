@@ -112,7 +112,7 @@ namespace Microsoft.EntityFrameworkCore.Migrations.Design
 
                     if (sanitizedContextName.EndsWith("Context", StringComparison.Ordinal))
                     {
-                        builder.Append(sanitizedContextName.Substring(0, sanitizedContextName.Length - 7));
+                        builder.Append(sanitizedContextName, 0, sanitizedContextName.Length - 7);
                     }
                     else
                     {
