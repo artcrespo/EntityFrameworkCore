@@ -41,7 +41,7 @@ namespace Microsoft.EntityFrameworkCore
         [Fact]
         public virtual void Can_build_monster_model_and_seed_data_using_all_navigations()
         {
-            CreateAndSeedDatabase(context => context.SeedUsingNavigations(principalNavs: true, dependentNavs: true));
+            CreateAndSeedDatabase(context => context.SeedUsingNavigations(dependentNavs: true, principalNavs: true));
 
             SimpleVerification();
             FkVerification();
@@ -51,7 +51,7 @@ namespace Microsoft.EntityFrameworkCore
         [Fact]
         public virtual void Can_build_monster_model_and_seed_data_using_dependent_navigations()
         {
-            CreateAndSeedDatabase(context => context.SeedUsingNavigations(principalNavs: false, dependentNavs: true));
+            CreateAndSeedDatabase(context => context.SeedUsingNavigations(dependentNavs: true, principalNavs: false));
 
             SimpleVerification();
             FkVerification();
@@ -61,7 +61,7 @@ namespace Microsoft.EntityFrameworkCore
         [Fact]
         public virtual void Can_build_monster_model_and_seed_data_using_principal_navigations()
         {
-            CreateAndSeedDatabase(context => context.SeedUsingNavigations(principalNavs: true, dependentNavs: false));
+            CreateAndSeedDatabase(context => context.SeedUsingNavigations(dependentNavs: false, principalNavs: true));
 
             SimpleVerification();
             FkVerification();

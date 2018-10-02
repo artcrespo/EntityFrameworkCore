@@ -12,6 +12,10 @@ using Xunit;
 // ReSharper disable ParameterOnlyUsedForPreconditionCheck.Local
 // ReSharper disable InconsistentNaming
 // ReSharper disable ConvertToAutoProperty
+
+#pragma warning disable RCS1213 // Remove unused member declaration.
+
+
 namespace Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal
 {
     public class BackingFieldConventionTest

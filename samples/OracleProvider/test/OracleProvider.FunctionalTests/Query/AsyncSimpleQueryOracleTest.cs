@@ -18,7 +18,6 @@ namespace Microsoft.EntityFrameworkCore.Query
 {
     public class AsyncSimpleQueryOracleTest : AsyncSimpleQueryTestBase<NorthwindQueryOracleFixture<NoopModelCustomizer>>
     {
-        private static readonly string _eol = Environment.NewLine;
 
         // ReSharper disable once UnusedParameter.Local
         public AsyncSimpleQueryOracleTest(NorthwindQueryOracleFixture<NoopModelCustomizer> fixture, ITestOutputHelper testOutputHelper)

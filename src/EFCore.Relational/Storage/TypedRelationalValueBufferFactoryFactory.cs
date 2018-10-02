@@ -76,7 +76,7 @@ namespace Microsoft.EntityFrameworkCore.Storage
             public IReadOnlyList<TypeMaterializationInfo> TypeMaterializationInfo { get; }
 
             public override bool Equals(object obj)
-                => obj is CacheKey && Equals((CacheKey)obj);
+                => obj is CacheKey cacheKey && Equals(cacheKey);
 
             private bool Equals(CacheKey other)
                 => TypeMaterializationInfo.SequenceEqual(other.TypeMaterializationInfo);

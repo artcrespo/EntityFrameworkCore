@@ -277,8 +277,7 @@ namespace Microsoft.EntityFrameworkCore.Query.Expressions
                 hashCode = (hashCode * 397) ^ (Instance?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ FunctionName.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Schema?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ Type.GetHashCode();
-                return hashCode;
+                return (hashCode * 397) ^ Type.GetHashCode();
             }
         }
 

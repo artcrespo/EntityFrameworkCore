@@ -2278,9 +2278,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2342,9 +2342,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: true,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2376,9 +2376,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: false,
                         orderDetailsLoaded: true,
                         productLoaded: false,
+                        customerLoaded: false,
                         ordersLoaded: false);
                 }
             }
@@ -2411,9 +2411,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: false,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: false,
                         ordersLoaded: false);
                 }
             }
@@ -2451,9 +2451,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2538,9 +2538,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2574,9 +2574,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2610,9 +2610,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                     CheckIsLoaded(
                         context,
                         order,
-                        customerLoaded: true,
                         orderDetailsLoaded: false,
                         productLoaded: false,
+                        customerLoaded: true,
                         ordersLoaded: false);
                 }
             }
@@ -2833,9 +2833,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                 CheckIsLoaded(
                     context,
                     order,
-                    customerLoaded: true,
                     orderDetailsLoaded: false,
                     productLoaded: false,
+                    customerLoaded: true,
                     ordersLoaded: true);
             }
         }
