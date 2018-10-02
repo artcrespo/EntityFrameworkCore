@@ -25,11 +25,11 @@ namespace Microsoft.EntityFrameworkCore.Query
             using (var ctx = CreateContext())
             {
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains("%B")).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains("%B"));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains("%B") == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains("a_")).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains("a_"));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains("a_") == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var result3 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains(null)).Select(c => c.FirstName).ToList();
@@ -39,11 +39,11 @@ namespace Microsoft.EntityFrameworkCore.Query
                 Assert.True(ctx.FunkyCustomers.Count() == result4.Count);
 
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains("_Ba_")).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains("_Ba_"));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains("_Ba_") == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.Contains("%B%a%r")).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.Contains("%B%a%r"));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains("%B%a%r") == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var result7 = ctx.FunkyCustomers.Where(c => !c.FirstName.Contains("")).Select(c => c.FirstName).ToList();
@@ -61,12 +61,12 @@ namespace Microsoft.EntityFrameworkCore.Query
             {
                 var prm1 = "%B";
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains(prm1)).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains(prm1));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains(prm1) == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var prm2 = "a_";
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains(prm2)).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains(prm2));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains(prm2) == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var prm3 = (string)null;
@@ -79,12 +79,12 @@ namespace Microsoft.EntityFrameworkCore.Query
 
                 var prm5 = "_Ba_";
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.Contains(prm5)).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.Contains(prm5));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains(prm5) == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var prm6 = "%B%a%r";
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.Contains(prm6)).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.Contains(prm6));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.Contains(prm6) == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var prm7 = "";
@@ -171,11 +171,11 @@ namespace Microsoft.EntityFrameworkCore.Query
             using (var ctx = CreateContext())
             {
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith("%B")).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith("%B"));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith("%B") == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith("a_")).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith("a_"));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith("a_") == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var result3 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith(null)).Select(c => c.FirstName).ToList();
@@ -185,11 +185,11 @@ namespace Microsoft.EntityFrameworkCore.Query
                 Assert.True(ctx.FunkyCustomers.Count() == result4.Count);
 
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith("_Ba_")).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith("_Ba_"));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith("_Ba_") == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.StartsWith("%B%a%r")).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.StartsWith("%B%a%r"));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith("%B%a%r") == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var result7 = ctx.FunkyCustomers.Where(c => !c.FirstName.StartsWith("")).Select(c => c.FirstName).ToList();
@@ -207,12 +207,12 @@ namespace Microsoft.EntityFrameworkCore.Query
             {
                 var prm1 = "%B";
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith(prm1)).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith(prm1));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith(prm1) == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var prm2 = "a_";
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith(prm2)).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith(prm2));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith(prm2) == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var prm3 = (string)null;
@@ -225,12 +225,12 @@ namespace Microsoft.EntityFrameworkCore.Query
 
                 var prm5 = "_Ba_";
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.StartsWith(prm5)).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.StartsWith(prm5));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith(prm5) == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var prm6 = "%B%a%r";
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.StartsWith(prm6)).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.StartsWith(prm6));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.StartsWith(prm6) == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var prm7 = "";
@@ -317,11 +317,11 @@ namespace Microsoft.EntityFrameworkCore.Query
             using (var ctx = CreateContext())
             {
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith("%B")).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith("%B"));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith("%B") == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith("_r")).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith("_r"));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith("_r") == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var result3 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith(null)).Select(c => c.FirstName).ToList();
@@ -331,11 +331,11 @@ namespace Microsoft.EntityFrameworkCore.Query
                 Assert.True(ctx.FunkyCustomers.Count() == result4.Count);
 
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith("a__r_")).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith("a__r_"));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith("a__r_") == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.EndsWith("%B%a%r")).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.EndsWith("%B%a%r"));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith("%B%a%r") == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var result7 = ctx.FunkyCustomers.Where(c => !c.FirstName.EndsWith("")).Select(c => c.FirstName).ToList();
@@ -353,12 +353,12 @@ namespace Microsoft.EntityFrameworkCore.Query
             {
                 var prm1 = "%B";
                 var result1 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith(prm1)).Select(c => c.FirstName).ToList();
-                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith(prm1));
+                var expected1 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith(prm1) == true);
                 Assert.True(expected1.Count() == result1.Count);
 
                 var prm2 = "_r";
                 var result2 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith(prm2)).Select(c => c.FirstName).ToList();
-                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith(prm2));
+                var expected2 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith(prm2) == true);
                 Assert.True(expected2.Count() == result2.Count);
 
                 var prm3 = (string)null;
@@ -371,12 +371,12 @@ namespace Microsoft.EntityFrameworkCore.Query
 
                 var prm5 = "a__r_";
                 var result5 = ctx.FunkyCustomers.Where(c => c.FirstName.EndsWith(prm5)).Select(c => c.FirstName).ToList();
-                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && c.EndsWith(prm5));
+                var expected5 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith(prm5) == true);
                 Assert.True(expected5.Count() == result5.Count);
 
                 var prm6 = "%B%a%r";
                 var result6 = ctx.FunkyCustomers.Where(c => !c.FirstName.EndsWith(prm6)).Select(c => c.FirstName).ToList();
-                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c != null && !c.EndsWith(prm6));
+                var expected6 = ctx.FunkyCustomers.Select(c => c.FirstName).ToList().Where(c => c?.EndsWith(prm6) == false);
                 Assert.True(expected6.Count() == result6.Count);
 
                 var prm7 = "";

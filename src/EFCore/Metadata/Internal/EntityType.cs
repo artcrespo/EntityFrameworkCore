@@ -835,8 +835,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                 }
 
                 var actualProperty = FindProperty(property.Name);
-                if (actualProperty == null
-                    || !actualProperty.DeclaringEntityType.IsAssignableFrom(property.DeclaringEntityType)
+                if (actualProperty?.DeclaringEntityType.IsAssignableFrom(property.DeclaringEntityType) != true
                     || property.Builder == null)
                 {
                     throw new InvalidOperationException(CoreStrings.ForeignKeyPropertiesWrongEntity(Property.Format(properties), this.DisplayName()));
@@ -1620,8 +1619,7 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Internal
                 throw new InvalidOperationException(CoreStrings.ClrPropertyOnShadowEntity(memberInfo.Name, this.DisplayName()));
             }
 
-            if (memberInfo.DeclaringType == null
-                || !memberInfo.DeclaringType.GetTypeInfo().IsAssignableFrom(ClrType.GetTypeInfo()))
+            if (memberInfo.DeclaringType?.GetTypeInfo().IsAssignableFrom(ClrType.GetTypeInfo()) != true)
             {
                 throw new ArgumentException(
                     CoreStrings.PropertyWrongEntityClrType(

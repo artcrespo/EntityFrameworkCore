@@ -20,7 +20,7 @@ namespace Microsoft.EntityFrameworkCore.TestModels.TransportationModel
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Vehicle>(eb => { eb.HasKey(e => e.Name); });
+            modelBuilder.Entity<Vehicle>(eb => eb.HasKey(e => e.Name));
             modelBuilder.Entity<Engine>(
                 eb =>
                 {

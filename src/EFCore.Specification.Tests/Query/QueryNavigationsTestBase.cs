@@ -637,7 +637,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         }
 
         [ConditionalTheory]
-        
+
         [MemberData(nameof(IsAsyncData))]
         public virtual Task Collection_where_nav_prop_any(bool isAsync)
         {
@@ -948,7 +948,9 @@ namespace Microsoft.EntityFrameworkCore.Query
                       orderby c.CustomerID
                       select new
                       {
+#pragma warning disable RCS1146 // Use conditional access.
                           Customer = c.Orders != null && c.Orders.Where(e => orderIds.Contains(e.OrderID)).Any()
+#pragma warning restore RCS1146 // Use conditional access.
                               ? c.Orders.Where(e => orderIds.Contains(e.OrderID)).First().Customer
                               : null
                       },

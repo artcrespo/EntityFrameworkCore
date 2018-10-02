@@ -732,7 +732,7 @@ namespace Microsoft.EntityFrameworkCore.Infrastructure
         {
             var entity = new NonSignedIntegerKeyEntity();
             var modelBuilder = CreateModelBuilder();
-            modelBuilder.Entity<NonSignedIntegerKeyEntity>(e => { e.HasData(entity); });
+            modelBuilder.Entity<NonSignedIntegerKeyEntity>(e => e.HasData(entity));
 
             VerifyError(
                 CoreStrings.SeedDatumDefaultValue(nameof(NonSignedIntegerKeyEntity), nameof(NonSignedIntegerKeyEntity.Id), entity.Id),
@@ -744,7 +744,7 @@ namespace Microsoft.EntityFrameworkCore.Infrastructure
         public virtual void Detects_missing_signed_integer_key_values_in_seeds()
         {
             var modelBuilder = CreateModelBuilder();
-            modelBuilder.Entity<A>(e => { e.HasData(new A()); });
+            modelBuilder.Entity<A>(e => e.HasData(new A()));
 
             VerifyError(
                 CoreStrings.SeedDatumSignedNumericValue(nameof(A), nameof(A.Id)),

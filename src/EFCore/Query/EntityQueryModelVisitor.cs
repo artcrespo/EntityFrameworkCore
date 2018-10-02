@@ -784,8 +784,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             return !_modelExpressionApplyingExpressionVisitor.IsViewTypeQuery
                    && !(queryModel.GetOutputDataInfo() is StreamedScalarValueInfo)
                    && (QueryCompilationContext.TrackQueryResults || lastTrackingModifier != null)
-                   && (lastTrackingModifier == null
-                       || lastTrackingModifier.IsTracking);
+                   && (lastTrackingModifier?.IsTracking != false);
         }
 
         private static readonly MethodInfo _getEntityAccessors

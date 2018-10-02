@@ -160,8 +160,7 @@ namespace Microsoft.EntityFrameworkCore.Query.Internal
                     _targetQueryModel = querySourceTracingExpressionVisitor.OriginGroupByQueryModel;
                 }
 
-                if (querySourceReferenceExpression == null
-                    || querySourceReferenceExpression.Type.IsGrouping())
+                if (querySourceReferenceExpression?.Type.IsGrouping() != false)
                 {
                     continue;
                 }

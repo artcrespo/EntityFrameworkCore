@@ -99,7 +99,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             using (var context = CreateContext())
             {
                 await context.Customers.ForEachAsync(
-                    c => { context.Orders.Where(o => o.CustomerID == c.CustomerID).ToList(); });
+                    c => context.Orders.Where(o => o.CustomerID == c.CustomerID).ToList());
             }
         }
 

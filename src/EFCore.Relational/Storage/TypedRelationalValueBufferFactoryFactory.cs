@@ -276,8 +276,7 @@ namespace Microsoft.EntityFrameworkCore.Storage
                 convertedExpression = Expression.Convert(convertedExpression, typeof(object));
             }
 
-            if (property == null
-                || property.IsNullable
+            if (property?.IsNullable != false
                 || property.DeclaringEntityType.BaseType != null
                 || materializationInfo.IsFromLeftOuterJoin != false)
             {

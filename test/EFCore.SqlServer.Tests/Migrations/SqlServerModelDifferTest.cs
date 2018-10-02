@@ -431,7 +431,7 @@ namespace Microsoft.EntityFrameworkCore.Migrations
             Execute(
                 _ => { },
                 modelBuilder => modelBuilder.HasDbFunction(mi),
-                operations => { Assert.Equal(0, operations.Count); });
+                operations => Assert.Equal(0, operations.Count));
         }
 
         [Fact]
@@ -667,10 +667,7 @@ namespace Microsoft.EntityFrameworkCore.Migrations
                             x.HasIndex("Zip")
                                 .ForSqlServerInclude("City");
                         }),
-                operations =>
-                {
-                    Assert.Equal(0, operations.Count);
-                });
+                operations => Assert.Equal(0, operations.Count));
         }
 
         [Fact]

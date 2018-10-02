@@ -85,7 +85,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
         public CommandArgument Argument(string name, string description, Action<CommandArgument> configuration, bool multipleValues = false)
         {
             var lastArg = Arguments.LastOrDefault();
-            if (lastArg != null && lastArg.MultipleValues)
+            if (lastArg?.MultipleValues == true)
             {
                 var message = string.Format("The last argument '{0}' accepts multiple values. No more argument can be added.",
                     lastArg.Name);
@@ -588,7 +588,7 @@ namespace Microsoft.DotNet.Cli.CommandLine
 
             public bool MoveNext()
             {
-                if (Current == null || !Current.MultipleValues)
+                if (Current?.MultipleValues != true)
                 {
                     return _enumerator.MoveNext();
                 }

@@ -88,8 +88,7 @@ namespace Microsoft.EntityFrameworkCore
                    where type.GetTypeInfo().IsVisible
                          && !type.GetTypeInfo().IsSealed
                          && type.GetConstructors(AnyInstance).Any(c => c.IsPublic || c.IsFamily || c.IsFamilyOrAssembly)
-                         && type.Namespace != null
-                         && !type.Namespace.EndsWith(".Compiled")
+                         && type.Namespace?.EndsWith(".Compiled") == false
                          && ShouldHaveVirtualMethods(type)
                    from method in type.GetMethods(AnyInstance)
                    where method.DeclaringType == type

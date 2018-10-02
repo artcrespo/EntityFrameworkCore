@@ -154,7 +154,7 @@ CREATE TABLE MountainsColumns (
 
                     Assert.Equal(2, table.Columns.Count);
                     Assert.All(
-                        table.Columns, c => { Assert.Equal("MountainsColumns", c.Table.Name); });
+                        table.Columns, c => Assert.Equal("MountainsColumns", c.Table.Name));
 
                     Assert.Single(table.Columns.Where(c => c.Name == "Id"));
                     Assert.Single(table.Columns.Where(c => c.Name == "Name"));
@@ -233,7 +233,7 @@ CREATE INDEX IX_INDEX on IndexTable ( IndexProperty );",
 
                     Assert.Equal(2, table.Indexes.Count);
                     Assert.All(
-                        table.Indexes, c => { Assert.Equal("IndexTable", c.Table.Name); });
+                        table.Indexes, c => Assert.Equal("IndexTable", c.Table.Name));
 
                     Assert.Single(table.Indexes.Where(c => c.Name == "IX_NAME"));
                     Assert.Single(table.Indexes.Where(c => c.Name == "IX_INDEX"));

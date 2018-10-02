@@ -15,6 +15,9 @@ using Xunit;
 // ReSharper disable InconsistentNaming
 // ReSharper disable ReturnValueOfPureMethodIsNotUsed
 // ReSharper disable NegativeEqualityExpression
+
+#pragma warning disable RCS1068 // Simplify logical negation.
+
 namespace Microsoft.EntityFrameworkCore.Query
 {
     public abstract class NullSemanticsQueryTestBase<TFixture> : IClassFixture<TFixture>
@@ -65,6 +68,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         [Fact]
         public virtual void Compare_bool_with_bool_equal_negated()
         {
+
             AssertQuery<NullSemanticsEntity1>(es => es.Where(e => !(e.BoolA == e.BoolB)));
             AssertQuery<NullSemanticsEntity1>(es => es.Where(e => !(e.BoolA == e.NullableBoolB)));
             AssertQuery<NullSemanticsEntity1>(es => es.Where(e => !(e.NullableBoolA == e.BoolB)));

@@ -2378,7 +2378,7 @@ WHERE [c].[Id] IN (
         {
             return CreateTestStore(
                 () => new MyContext8909(_options),
-                context => { ClearLog(); });
+                context => ClearLog());
         }
 
         public class MyContext8909 : DbContext
@@ -5235,10 +5235,7 @@ WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();");
         {
             return CreateTestStore(
                 () => new MyContext13079(_options),
-                context =>
-                {
-                    ClearLog();
-                });
+                context => ClearLog());
         }
 
         public class MyContext13079 : DbContext

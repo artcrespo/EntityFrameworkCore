@@ -1498,8 +1498,7 @@ namespace Microsoft.EntityFrameworkCore.Query
                 = (selectManyMethodCallExpression?.Arguments.Skip(1).FirstOrDefault() as LambdaExpression)
                 ?.Body as MethodCallExpression;
 
-            if (selectManyMethodCallExpression == null
-                || !selectManyMethodCallExpression.Method.MethodIsClosedFormOf(LinqOperatorProvider.SelectMany)
+            if (selectManyMethodCallExpression?.Method.MethodIsClosedFormOf(LinqOperatorProvider.SelectMany) != true
                 || !IsShapedQueryExpression(outerShapedQuery)
                 || !IsShapedQueryExpression(innerShapedQuery))
             {
@@ -1572,8 +1571,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             var innerShapedQuery
                 = joinMethodCallExpression?.Arguments.Skip(1).FirstOrDefault() as MethodCallExpression;
 
-            if (joinMethodCallExpression == null
-                || !joinMethodCallExpression.Method.MethodIsClosedFormOf(LinqOperatorProvider.Join)
+            if (joinMethodCallExpression?.Method.MethodIsClosedFormOf(LinqOperatorProvider.Join) != true
                 || !IsShapedQueryExpression(outerShapedQuery)
                 || !IsShapedQueryExpression(innerShapedQuery))
             {
@@ -1696,8 +1694,7 @@ namespace Microsoft.EntityFrameworkCore.Query
             var innerShapedQuery
                 = groupJoinMethodCallExpression?.Arguments.Skip(1).FirstOrDefault() as MethodCallExpression;
 
-            if (groupJoinMethodCallExpression == null
-                || !groupJoinMethodCallExpression.Method.MethodIsClosedFormOf(LinqOperatorProvider.GroupJoin)
+            if (groupJoinMethodCallExpression?.Method.MethodIsClosedFormOf(LinqOperatorProvider.GroupJoin) != true
                 || !IsShapedQueryExpression(outerShapedQuery)
                 || !IsShapedQueryExpression(innerShapedQuery))
             {
